@@ -1,15 +1,31 @@
 import streamlit as st
 from PIL import Image
-import pickle
+import plotly.io as pio
 import os
 
-file_path_1 = os.path.join(os.getcwd(), 'app/utils/forecast_weather_figure.pkl')
-with open(file_path_1, 'rb') as f:
-    forecast_weather_fig = pickle.load(f)
+# Debugging: Print the current working directory
+st.write("Current working directory:", os.getcwd())
 
-file_path_2 = os.path.join(os.getcwd(), 'app/utils/forecast_figure.pkl')
-with open(file_path_2, 'rb') as f:
-    forecast_fig = pickle.load(f)
+# Load Plotly figures from JSON files
+file_path_1 = os.path.join(os.getcwd(), 'app/utils/forecast_weather_figure.json')
+file_path_2 = os.path.join(os.getcwd(), 'app/utils/forecast_figure.json')
+
+# Debugging: Print the file paths to verify correctness
+st.write("Forecast Weather Figure Path:", file_path_1)
+st.write("Forecast Figure Path:", file_path_2)
+
+# Safely load the figures, handling missing files
+try:
+    forecast_weather_fig = pio.read_json(file_path_1)
+except FileNotFoundError:
+    st.error(f"File not found: {file_path_1}")
+    forecast_weather_fig = None
+
+try:
+    forecast_fig = pio.read_json(file_path_2)
+except FileNotFoundError:
+    st.error(f"File not found: {file_path_2}")
+    forecast_fig = None
 
 # Title
 st.title("Proof-of-Concept, Prédiction de la balance électrique roumaine avec NeuralProphet et données météo")
@@ -58,8 +74,14 @@ elif slide == 8:
 
 elif slide == 9:
     st.header("Forecasting Model Weather")
-    st.plotly_chart(forecast_weather_fig)
+    if forecast_weather_fig:
+        st.plotly_chart(forecast_weather_fig)
+    else:
+        st.error("Unable to load Forecasting Model Weather figure.")
 
 elif slide == 10:
     st.header("Forecasting Model")
-    st.plotly_chart(forecast_fig)
+    if forecast_fig:
+        st.plotly_chart(forecast_fig)
+    else:
+        st.error("Unable to load Forecasting Model figure.")
