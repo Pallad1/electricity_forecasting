@@ -1,12 +1,15 @@
 import streamlit as st
 from PIL import Image
 import pickle
+import os
 
-with open('app/utils/forecast_weather_figure.pkl', 'rb') as f:
+file_path_1 = os.path.join(os.getcwd(), 'app/utils/forecast_weather_figure.pkl')
+with open(file_path_1, 'rb') as f:
     forecast_weather_fig = pickle.load(f)
 
-with open('app/utils/forecast_figure.pkl', 'rb') as f:
-    forecast_fig = pickle.load(f)
+file_path_2 = os.path.join(os.getcwd(), 'app/utils/forecast_weather_figure.pkl')
+with open(file_path_2, 'rb') as f:
+    forecast_weather_fig = pickle.load(f)
 
 # Title
 st.title("Proof-of-Concept, Prédiction de la balance électrique roumaine avec NeuralProphet et données météo")
