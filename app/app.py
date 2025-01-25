@@ -12,7 +12,7 @@ with open('app/utils/forecast_figure.pkl', 'rb') as f:
 st.title("Proof-of-Concept, Prédiction de la balance électrique roumaine avec NeuralProphet et données météo")
 
 # Slider for navigation
-slide = st.slider("Select Slide", 1, 6, 1)
+slide = st.slider("Select Slide", 1, 10, 1)
 
 # Display content based on slider value
 if slide == 1:
