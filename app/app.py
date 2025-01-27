@@ -3,16 +3,9 @@ from PIL import Image
 import plotly.io as pio
 import os
 
-# Debugging: Print the current working directory
-st.write("Current working directory:", os.getcwd())
-
 # Load Plotly figures from JSON files
 file_path_1 = os.path.join(os.getcwd(), 'app/utils/forecast_weather_figure.json')
 file_path_2 = os.path.join(os.getcwd(), 'app/utils/forecast_figure.json')
-
-# Debugging: Print the file paths to verify correctness
-st.write("Forecast Weather Figure Path:", file_path_1)
-st.write("Forecast Figure Path:", file_path_2)
 
 # Safely load the figures, handling missing files
 try:
