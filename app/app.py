@@ -32,7 +32,7 @@ if slide == 1:
     st.write("Proof-of-Concept, Prédiction de la balance électrique roumaine avec NeuralProphet et données météo")
 elif slide == 2:
     st.header("Consumption vs Production")
-    image = Image.open('app/utils/consumptionvsProduction.png')
+    image = Image.open('app/utils/consumptionvsproduction.png')
     st.image(image, caption='Consumption vs Production')
 elif slide == 3:
     st.header("Electricity Balance")
