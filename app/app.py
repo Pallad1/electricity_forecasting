@@ -102,7 +102,7 @@ elif slide == 7:
 
         user_index = st.number_input(
         "Nous sommes le 31 mars 2024 à 21h, date de fin des données d'entraînement.\
-        Sélectionnez votre horizon de prédiction (en heures), jusqu'à 140 heures (5 jours, horizon raisonnable pour des données météo):",
+        Sélectionnez votre horizon de prédiction (en heures), jusqu'à 120 heures (5 jours, horizon raisonnable pour des données météo):",
         min_value=1,
         max_value=len(forecast_data),
         value=1
